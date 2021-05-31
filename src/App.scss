@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+:root{
+  font-size: 10px;
+  --main-font : 'Poppins', sans-serif;
+  --login-dark-background : #333333;
+  --theme-color: #0A80FF;
+}
+*{
+  font-family: var(--main-font);
+}
+body, section{
+  min-height: 100vh;
+}
+@import "./sass/mixins";
+
+@import "./sass/login";
+@import "./sass/home";
