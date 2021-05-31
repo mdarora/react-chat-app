@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import spinner from "../images/Spinner-1s-200px-white.svg";
 
 const Login = () => {
-    
+
     const [loginEmail , setloginEmail] = useState("");
     const [loginpassword , setloginpassword] = useState("");
 
@@ -14,6 +15,10 @@ const Login = () => {
         }
     }
 
+    const userLogin = (e) =>{
+        e.preventDefault();
+    }
+
     return (
     <>
         <section className="login-section">
@@ -22,7 +27,7 @@ const Login = () => {
 
                     <h4>Login</h4>
                     <div className="login-form-area">
-                        <form method="post">
+                        <form onSubmit={userLogin} method="post">
                             <div className="input-field">
                                 <input type="email" name="login-email" id="login-email" placeholder="Enter E-mail" autoComplete="off" value={loginEmail} onChange={e => setloginEmail(e.target.value)}  />
                             </div>
@@ -39,7 +44,8 @@ const Login = () => {
                                 </div>
                             </div>
                             <div id="response" className="res text-danger">
-                                Invalid details
+                                <span id="res-text"></span>
+                                <img id="spinner" src={spinner} alt="Spinner svg" width="30" hidden/>
                             </div>
                             <div className="form-btn-container">
                                 <button className="form-btn" type="submit">Login</button>
