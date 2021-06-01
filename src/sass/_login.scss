@@ -22,21 +22,7 @@
             width: 100%;
         }
         input{
-            color: #fff;
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            border: none;
-            border-radius: .5rem;
-            outline: none;
-            background-color: var(--login-dark-background);
-            filter: brightness(90%);
-            box-shadow: inset -5px -5px 10px 0px #00000033;
-
-            &::placeholder{
-                color: #ffffff50;
-            }
+            @include inputField;
         }
         .show-forgot-password{
             font-size: 1.2rem;
