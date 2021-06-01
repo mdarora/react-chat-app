@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Logout from './components/Logout';
 import Register from "./components/Register";
+import ResetPassword from './components/ResetPassword';
 
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.scss";
@@ -25,6 +26,10 @@ const App = () => {
 
       <Route path='/logout'>
         <Logout></Logout>
+      </Route>
+
+      <Route path='/reset-password'>
+        <ResetPassword></ResetPassword>
       </Route>
 
       <Route path='/'>
