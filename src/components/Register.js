@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from "react-router-dom";
+import cookies from 'js-cookie';
 import spinner from "../images/Spinner-1s-200px-white.svg";
 
 const Register = () => {
 
     const history = useHistory();
+
+    if (cookies.get('jwtoken')){
+        history.push('/');
+    }
 
     const [registerUser , setregisterUser] = useState({});
     const [enteredOtp, setenteredOtp] = useState('');
