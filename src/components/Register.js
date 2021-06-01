@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import spinner from "../images/Spinner-1s-200px-white.svg";
 
 const Register = () => {
+
+    const history = useHistory();
 
     const [registerUser , setregisterUser] = useState({});
     const [enteredOtp, setenteredOtp] = useState('');
@@ -16,6 +18,12 @@ const Register = () => {
             document.getElementById("register-password").setAttribute("type", "password");
             document.getElementById("register-Cpassword").setAttribute("type", "password");
         }
+    };
+
+    const showRes = (tagId, txt, addClass, removeClass) => {
+        setResText(txt);
+        document.getElementById(tagId).classList.add(addClass);
+        document.getElementById(tagId).classList.remove(removeClass);
     }
 
     const regInputs = (e) =>{
@@ -24,18 +32,80 @@ const Register = () => {
         setregisterUser({...registerUser, [name] : value});
     }
 
-    const userRegister = (e) =>{
+    const userRegister = async (e) =>{
         e.preventDefault();
-        setResText("OTP sent to your Email");
-        setTimeout(() => {
-            document.getElementById('reg-form').hidden = true;
-            document.getElementById('otp-form').hidden = false;
-        }, 2000);
+
+        const spinner = document.getElementById('spinner');
+
+        try {
+            setResText('');
+            spinner.hidden = false;
+            const res = await fetch(`/register`, {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify({
+                    name : registerUser.regName,
+                    email : registerUser.regEmail,
+                    password : registerUser.regPassword,
+                    cpassword : registerUser.regCPassword
+                })
+            });
+            const result = await res.json();
+
+            if (result.message){
+                spinner.hidden = true;
+                showRes('resText', result.message, 'text-success', 'text-danger');
+                setTimeout(() => {
+                    document.getElementById('reg-form').hidden = true;
+                    document.getElementById('otp-form').hidden = false;
+                }, 2000);
+            } else if (result.error){
+                spinner.hidden = true;
+                showRes('resText', result.error, 'text-danger', 'text-success');
+            }
+        } catch (error) {
+            console.log('Catched : ',error);
+            spinner.hidden = true;
+            showRes('resText', 'Something went wrong!', 'text-danger', 'text-success');
+        }
     }
 
-    const matchOtp = (e) =>{
+    const matchOtp = async (e) =>{
         e.preventDefault();
-        setResText("Invalid OTP");
+        const spinner = document.getElementById('otpSpinner');
+
+        try {
+            setResText('');
+            spinner.hidden = false;
+
+            const res = await fetch('/otpverification', {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify({enteredOtp : enteredOtp})
+            });
+    
+            const result = await res.json();
+            
+            if(result.message){
+                spinner.hidden = true;
+                showRes('otpResText', result.message, 'text-success', 'text-danger');
+
+                setTimeout(() => {
+                    history.push('/login');
+                }, 2000);
+            } else if (result.error) {
+                spinner.hidden = true;
+                showRes('otpResText', result.error, 'text-danger', 'text-success');
+            }
+        } catch (error) {
+            console.log(error);
+            spinner.hidden = true;
+            showRes('otpResText', 'Something went wrong!', 'text-danger', 'text-success');
+        }
     }
 
     return (
@@ -64,12 +134,12 @@ const Register = () => {
                             <div className="show-forgot-password">
                                 <div className="show-pass">
                                     <input type="checkbox" name="show-pass" id="show-pass" onChange={(showPass)} />
-                                    <span>Show Password</span>
+                                    <label htmlFor='show-pass'>Show Password</label>
                                 </div>
                             </div>
 
                             <div className="res text-danger">
-                                <span>{resText}</span>
+                                <span id='resText'>{resText}</span>
                                 <img id="spinner" src={spinner} alt="Spinner svg" width="30" hidden/>
                             </div>
 
@@ -84,9 +154,9 @@ const Register = () => {
                                 <input type="number" name="otp" id="otp" placeholder="Enter OTP" min='0' autoComplete="off" value={enteredOtp} onChange={e => setenteredOtp(e.target.value)}  required/>
                             </div>
 
-                            <div className="res text-danger">
-                                <span>{resText}</span>
-                                <img id="spinner" src={spinner} alt="Spinner svg" width="30" hidden/>
+                            <div className="res text-success">
+                                <span id='otpResText'>{resText}</span>
+                                <img id="otpSpinner" src={spinner} alt="Spinner svg" width="30" hidden/>
                             </div>
 
                             <div className="form-btn-container">
