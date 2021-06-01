@@ -1,0 +1,62 @@
+.reset-section{
+    background-color: var(--login-dark-background);
+
+    .reset-area{
+        color: #fff;
+        width: 100%;
+        max-width: 57.5rem;
+        min-height: 100vh;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        h4{
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 2rem;
+        }
+        div{
+            width: 100%;
+        }
+        input{
+            @include inputField;
+        }
+        .show-forgot-password{
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            div{
+                width: auto;
+            }
+            .show-pass{
+                display: flex;
+                align-items: center;
+                input{
+                    width: auto;
+                    margin-right: 1rem;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .res{
+            font-size: 1.4rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .form-btn-container{
+            margin: 2rem 0;
+            .form-btn{
+                @include form-btn;
+            }
+        }
+
+        .login-link{
+            text-align: center;
+            font-size: 1.4rem;
+        }
+    }
+}
