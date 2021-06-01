@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Logout from './components/Logout';
 import Register from "./components/Register";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -20,6 +21,10 @@ const App = () => {
 
       <Route path='/login'>
         <Login></Login>
+      </Route>
+
+      <Route path='/logout'>
+        <Logout></Logout>
       </Route>
 
       <Route path='/'>
