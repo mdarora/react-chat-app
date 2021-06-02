@@ -1,0 +1,112 @@
+.chats-section{
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #2D2D2D;
+}
+
+.chats-header{
+    padding: 1.5rem;
+    background-color: #383F44;
+    border-bottom: 1px solid var(--theme-color);
+    .title{
+        color: #fff;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h3{
+            margin-bottom: 0;
+        }
+        .menu svg{
+            font-size: 2.3rem;
+            cursor: pointer;
+        }
+    }
+
+    .chats-search{
+        border-radius: .5rem;
+        background-color: #2D2D2D;
+
+        form{
+            display: flex;
+            align-items: center;
+            
+            input, button{
+                color: #fff;
+                flex-grow: 1;
+                border: none;
+                padding: .8rem;
+                outline: none;
+                font-size: 1.2rem;
+                background: transparent;
+            }
+            button{
+                flex-grow: 0;
+                padding: .8rem 1.5rem;
+                svg{
+                    font-size: 2.3rem;
+                }
+            }
+        }
+    }
+
+}
+
+.chats-list{
+    padding:0;
+    margin-bottom: 0;
+    list-style: none;
+    overflow-y: auto;
+    background-color: #2D2D2D;
+
+    &::-webkit-scrollbar{
+        width: 0rem;
+    }
+
+    &::-webkit-scrollbar-track{
+        width: 0px;
+    }
+
+    .chats-list-item{
+        border-bottom:1px solid #383F44;
+
+        a{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 1.5rem 2rem;
+            transition: all .3s;
+
+            &:hover{
+                background-color: #383F44;
+            }
+
+            .Chat-avtaar svg{
+                color: #f5f5f5;
+                font-size: 5rem;
+            }
+            .chat-content{
+                padding-left: 1rem;
+                flex-grow: 1;
+                .chat-name{
+                    color: #fff;
+                    h5{
+                        margin-bottom: 0;
+                    }
+                }
+                .chat-last-msg{
+                    display: flex;
+
+                    .last-msg{
+                        font-size: 1.2rem;
+                        color: #727272;
+                        width: 230px;
+                        margin-top: .5rem;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
