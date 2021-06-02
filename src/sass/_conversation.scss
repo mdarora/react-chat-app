@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--dark-background);
-    border-bottom:1px solid #2d2d2d;
+    border-bottom:1px solid var(--dark-background-2);
 
     .conv-header-title{
         display: flex;
@@ -77,7 +77,7 @@
         width: .5rem;
     }
     &::-webkit-scrollbar-thumb{
-        background-color: #383F44;
+        background-color: var(--dark-background-3);
     }
 
     ul{
@@ -104,13 +104,13 @@
                 color: #ffffff;
                 background-color: var(--theme-color);
                 .message-time{
-                    color: #383F44;
+                    color: var(--dark-background-3);
                 }
             }
             p.other-user{
                 float: left;
                 color: #ffffffbf;
-                background-color: #383F44;
+                background-color: var(--dark-background-3);
                 .message-time{
                     color: var(--theme-color);
                     text-align: right;
@@ -124,7 +124,7 @@
     // position: fixed;
     // bottom: 0; left: 0; right: 0;
     margin-top: 1rem;
-    border-top: 1px solid #2d2d2d;
+    border-top: 1px solid var(--dark-background-2);
     background-color: var(--dark-background);
 
     form{
@@ -140,7 +140,7 @@
             outline: none;
             font-size: 1.4rem;
             border-radius: .5rem;
-            background-color: #2D2D2D;
+            background-color: var(--dark-background-2);
         }
         button{color: #ffffff;
             border: none;

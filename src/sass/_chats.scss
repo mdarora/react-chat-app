@@ -2,12 +2,12 @@
     max-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #2D2D2D;
+    background-color: var(--dark-background-2);
 }
 
 .chats-header{
     padding: 1.5rem;
-    background-color: #383F44;
+    background-color: var(--dark-background-3);
     border-bottom: 1px solid var(--theme-color);
     .title{
         color: #fff;
@@ -26,7 +26,7 @@
 
     .chats-search{
         border-radius: .5rem;
-        background-color: #2D2D2D;
+        background-color: var(--dark-background-2);
 
         form{
             display: flex;
@@ -58,7 +58,7 @@
     margin-bottom: 0;
     list-style: none;
     overflow-y: auto;
-    background-color: #2D2D2D;
+    background-color: var(--dark-background-2);
 
     &::-webkit-scrollbar{
         width: 0rem;
@@ -69,7 +69,7 @@
     }
 
     .chats-list-item{
-        border-bottom:1px solid #383F44;
+        border-bottom:1px solid var(--dark-background-3);
 
         a{
             display: flex;
@@ -79,7 +79,7 @@
             transition: all .3s;
 
             &:hover{
-                background-color: #383F44;
+                background-color: var(--dark-background-3);
             }
 
             .Chat-avtaar svg{
