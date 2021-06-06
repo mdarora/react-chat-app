@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import cookies from 'js-cookie';
-import spinner from "../images/Spinner-1s-200px-white.svg";
+import spinner from "../images/Spinner-1s-200px-blue.svg";
 
 const Register = () => {
 
