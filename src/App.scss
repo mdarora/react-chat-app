@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
 :root{
   font-size: 10px;
   --main-font : 'Poppins', sans-serif;
@@ -16,6 +18,9 @@ html{
 body, section{
   min-height: 100vh;
 }
+.logout-section{
+  background-color: var(--dark-background);
+}
 
 main{
   display: flex;
@@ -25,11 +30,10 @@ main{
 .wrapper{
   flex-grow: 1;
 }
-.text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+
+////////////////////////////////////////////////////////////////////////
+
+
 @import "./sass/mixins";
 
 @import "./sass/login";
@@ -39,3 +43,49 @@ main{
 @import "./sass/navigation";
 @import "./sass/chats";
 @import "./sass/conversation";
+
+
+
+@media screen and (max-width: 992px){
+  .d-none-sm{
+    display: none !important;
+  }
+  .backLink{
+    display: block !important;
+  }
+  main{
+    flex-direction: column-reverse;
+  }
+  .chats-list{
+    padding: 0 0 7rem 0;
+  }
+
+  .navigation{
+    min-height: 5rem;
+    max-height: 5rem;
+    max-width: 100vw;
+    min-width: 100vw;
+    padding: 1.5rem;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+
+    .nav-brand{
+      display: none;
+    }
+    .navs{
+        flex-direction: row;
+    }
+    .nav-links{
+        margin:0;
+        padding: 0px 1rem;
+        i{
+            color: #ffffff;
+            font-size: 2rem;
+        }
+    }
+  }
+}

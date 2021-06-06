@@ -1,13 +1,16 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
+
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Logout from './components/Logout';
 import Register from "./components/Register";
 import ResetPassword from './components/ResetPassword';
 
-import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/js/bootstrap.bundle";
+// import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./App.scss";
 
 const App = () => {
