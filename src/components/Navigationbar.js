@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Navigationbar = () => {
+const Navigationbar = (props) => {
+    const navClasses = `navigation ${props.dClass}`;
+
     return (
     <>
-        <nav className="navigation">
+        <nav id='navigation' className={navClasses}>
             <div className="nav-brand">
                 <Link to='/' title='Chat App'>
                     <svg viewBox="0 0 512 511">
