@@ -1,14 +1,27 @@
-import React from 'react';
-import {useHistory} from 'react-router-dom';
-import cookies from 'js-cookie';
+import React, { useEffect } from 'react';
+import {useHistory} from "react-router-dom";
 
 const Logout = () => {
     const history = useHistory();
-    console.log(cookies.remove('jwtoken'));
-    history.push('/login');
+
+    useEffect(()=>{
+
+        fetch("/logout",{
+            method: "GET",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            credentials:"include"
+        }).then((res)=>{
+            history.push("/login");
+        }).catch(err => console.log(err));
+
+    });
+
+
     return (
-    <>   
-    </>
+        <>
+        </>
     )
 }
 
